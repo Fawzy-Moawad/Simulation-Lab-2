@@ -18,9 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-        - language: c-cpp
-          build-mode: manual
+        language: [c-cpp]
 
     steps:
     - name: Checkout repository
@@ -33,10 +31,7 @@ jobs:
 
     # Build the project using the Makefile
     - name: Build the project
-      run: |
-        make
+      run: make
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-      with:
-        category: "/language:${{matrix.language}}"
