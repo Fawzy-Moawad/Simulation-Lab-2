@@ -1,4 +1,4 @@
-name: "CodeQL Analysis"
+name: "CodeQL"
 
 on:
   push:
@@ -10,17 +10,10 @@ on:
 
 jobs:
   analyze:
-    name: Analyze (${{ matrix.language }})
+    name: Analyze
     runs-on: ubuntu-latest
     permissions:
       security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - language: c-cpp
-            build-mode: manual
 
     steps:
     - name: Checkout repository
@@ -29,14 +22,11 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
+        languages: c-cpp
 
-    # Use make to build the project
-    - name: Build the project
+    - name: Build the code
       run: |
         make
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
-      with:
-        category: "/language:${{matrix.language}}"
