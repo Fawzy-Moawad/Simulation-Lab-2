@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [main]
   schedule:
     - cron: '0 0 * * 0'
@@ -22,8 +21,6 @@ jobs:
       fail-fast: false
       matrix:
         language: [cpp]
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
-        # Remove languages that are not in your repository
 
     steps:
     - name: Checkout repository
@@ -33,10 +30,6 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
-
-    # Replace Autobuild with a custom build command
-    - name: Build the project
-      run: make
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
