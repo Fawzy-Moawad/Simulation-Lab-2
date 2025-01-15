@@ -30,9 +30,8 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        build-mode: ${{ matrix.build-mode }}
 
-    # Use make to build the project
+    # Build the project using the Makefile
     - name: Build the project
       run: |
         make
