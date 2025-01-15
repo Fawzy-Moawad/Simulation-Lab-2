@@ -32,10 +32,10 @@ jobs:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
 
-    # Manual build step for the C project
+    # Use make to build the project
     - name: Build the project
       run: |
-        gcc -o file_size file_size.c
+        make
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
