@@ -33,10 +33,10 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
-        build-command: "make"
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    # Replace Autobuild with a custom build command
+    - name: Build the project
+      run: make
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
