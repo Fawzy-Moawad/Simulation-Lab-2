@@ -26,9 +26,9 @@ jobs:
       with:
         languages: cpp
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+    - name: Build the project
+      run: |
+        gcc -o file_size file_size.c
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
-
